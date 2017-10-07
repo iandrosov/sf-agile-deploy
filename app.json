@@ -1,0 +1,7 @@
+{
+  "name": "Salesforce Deployment Tool",
+  "description": "Salesforce Deployment Tool App - Java using Spring-Boot",
+  "repository": "https://github.com/iandrosov/sf-agile-deploy",
+  "logo": "https://sf-agile-deploy.herokuapp.com/spring.png",
+  "keywords": ["java", "Spring-Boot", "static"]
+}

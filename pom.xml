@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.force.deploy</groupId>
+	<artifactId>ForceDeploy</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>ForceDeploy</name>
+	<description>Demo project for Spring Boot</description>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.3.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+		<vaadin.version>8.0.5</vaadin.version>
+	</properties>
+
+	<repositories>
+    	<repository>
+        	<id>local-libs-dir</id>
+        	<name>locallib</name>
+        	<url>file:${project.basedir}/libs</url>
+    	</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mustache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.vaadin</groupId>
+			<artifactId>vaadin-spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web-services</artifactId>
+		</dependency>
+
+		<dependency>
+    		<groupId>org.apache.ant</groupId>
+    		<artifactId>ant</artifactId>
+    		<version>1.10.1</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.ant</groupId>
+    		<artifactId>ant-launcher</artifactId>
+    		<version>1.10.1</version>
+		</dependency>
+		
+		<!-- force.com ant deployment -->		
+		<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-annotations</artifactId>
+    		<version>2.6.3</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-core</artifactId>
+    		<version>2.6.3</version>
+		</dependency>
+		<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-databind</artifactId>
+    		<version>2.6.3</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.antlr</groupId>
+    		<artifactId>antlr-runtime</artifactId>
+    		<version>3.5</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.antlr</groupId>
+    		<artifactId>ST4</artifactId>
+    		<version>4.0.7</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.antlr</groupId>
+    		<artifactId>stringtemplate</artifactId>
+    		<version>3.2.1</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.httpcomponents</groupId>
+    		<artifactId>httpclient</artifactId>
+    		<version>4.5.1</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.httpcomponents</groupId>
+    		<artifactId>httpcore</artifactId>
+    		<version>4.4.3</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.httpcomponents</groupId>
+    		<artifactId>httpmime</artifactId>
+    		<version>4.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>ant.salesforce</groupId>
+			<artifactId>ant.salesforce</artifactId>
+			<version>40.0.0</version>
+			<type>jar</type>
+		</dependency>				
+	
+		
+		<!-- https://mvnrepository.com/artifact/org.eclipse.mylyn.github/org.eclipse.egit.github.core -->
+		<dependency>
+    		<groupId>org.eclipse.mylyn.github</groupId>
+    		<artifactId>org.eclipse.egit.github.core</artifactId>
+    		<version>2.1.5</version>
+		</dependency>		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.eclipse.jgit/org.eclipse.jgit -->
+		<dependency>
+    		<groupId>org.eclipse.jgit</groupId>
+    		<artifactId>org.eclipse.jgit</artifactId>
+    		<version>4.8.0.201705170830-rc1</version>
+		</dependency>
+		
+		<!-- Force.com WSC API -->
+		<dependency>
+			<groupId>com.force.api</groupId>
+			<artifactId>force-wsc</artifactId>
+			<version>40.0.0</version>
+		</dependency>	    	
+		<dependency>
+			<groupId>wsc.ent</groupId>
+			<artifactId>wsc.ent</artifactId>
+			<version>40.0.0</version>
+			<type>jar</type>
+		</dependency>				
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>com.vaadin</groupId>
+				<artifactId>vaadin-bom</artifactId>
+				<version>${vaadin.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

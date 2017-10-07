@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: ForceDeploy
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: igor-androsov
+Implementation-Vendor-Id: com.force.deploy
+Build-Jdk: 1.8.0_91
+Implementation-URL: http://projects.spring.io/spring-boot/ForceDeploy/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

@@ -1,5 +1,29 @@
+/*
+ * sf-agile-deploy - Salesforce Agile Deployment tool
+ *
+ * Copyright © 2017 Igor Androsov
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software 
+ * and associated documentation files (the "Software"), to deal in the Software without 
+ * restriction, including without limitation the rights to use, copy, modify, merge, publish, 
+ * distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the 
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all copies or 
+ * substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE 
+ * SOFTWARE.
+ */
 package com.force.deploy.start;
 
+// MIT license link https://www.tawesoft.co.uk/kb/article/mit-license-faq
+//
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,6 +47,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @RestController
 public class StartController {
+	private static final String START_DEPLOY_LOG_MSG = "Deployment Tool - Salesforce Agile Accelerator\r\n";
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private final AtomicInteger counter = new AtomicInteger(0);
 	
@@ -36,7 +61,7 @@ public class StartController {
     public String index(HttpServletRequest request) throws MalformedURLException {
     	       	
        	String key = "W-001234";
-       	dlog.addLogData(key, "Deployment message");
+       	dlog.addLogData(key, "Salesforce Agile Deployment tool message: Nothing to deploy at this time.");
        	
        	String str = myHTML(key,request);
         return str; //"Greetings from Spring Boot!";
@@ -83,7 +108,7 @@ public class StartController {
 		String baseUrl = getURLBase(request);
 		String resultUrl = baseUrl+"/ne?story="+storyName;
 		
-    	String htm = "<html><head><title>My Demo</title><script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script></head><script>";
+    	String htm = "<html><head><title>sf-agile-deploy</title><script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script></head><script>";
     	htm += "$(document).ready(function() {";
     	
     	htm += "  setInterval(function(){";
@@ -99,7 +124,7 @@ public class StartController {
     	htm += "}, 2000);";
     	
     	htm += "});";
-    	htm +="</script><body><H2>Deployment Log - " + storyName + "</H2><textarea id=\"txtbox\" name=\"txtbox\" rows=\"15\" cols=\"100\">Start deployment log...\r\n</textarea></body></html>";
+    	htm +="</script><body><H2>Deployment Log Story Name - " + storyName + "</H2><textarea id=\"txtbox\" name=\"txtbox\" rows=\"15\" cols=\"100\">Start deployment log...\r\n</textarea></body></html>";
     	return htm;
     }
  
@@ -118,7 +143,7 @@ public class StartController {
     	
     	DeferredResult<ResponseEntity<?>> result = new DeferredResult<>();
     	
-        String str = "Deployment Tool - Salesforce Agile Accelerator\r\n";
+        String str = START_DEPLOY_LOG_MSG;
         dlog.addLogData(storyName, str);
 	    new Thread(() -> {
 
@@ -150,7 +175,7 @@ public class StartController {
     	
     	DeferredResult<ResponseEntity<?>> result = new DeferredResult<>();
     	
-        String str = "Deployment Tool - Salesforce Agile Accelerator\r\n";
+        String str = START_DEPLOY_LOG_MSG;
         dlog.addLogData(storyName, str);
 	    new Thread(() -> {
 
@@ -181,7 +206,7 @@ public class StartController {
     	
     	DeferredResult<ResponseEntity<?>> result = new DeferredResult<>();
     	
-        String str = "Deployment Tool - Salesforce Agile Accelerator\r\n";
+        String str = START_DEPLOY_LOG_MSG;
         dlog.addLogData(storyName, str);
 	    new Thread(() -> {
 
@@ -213,7 +238,7 @@ public class StartController {
     	
     	DeferredResult<ResponseEntity<?>> result = new DeferredResult<>();
     	
-        String str = "Deployment Tool - Salesforce Agile Accelerator\r\n";
+        String str = START_DEPLOY_LOG_MSG;
         dlog.addLogData(storyName, str);
 	    new Thread(() -> {
 

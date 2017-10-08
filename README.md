@@ -5,7 +5,7 @@ This Salesforce deployment tool is work in progress to simplify Salesforce deplo
 
 The is Java Spring-Boot app to enable metadata deployments. The app is intended for [Heroku](https://www.heroku.com/platform) platform, and can be run on local server or other containers. Example Heroku app can be found [here](https://sf-agile-deploy.herokuapp.com/).
 
-The app provides REST API services to enable deployments of Salesforce metadata using Github repository together with Agile Accelerator and Change Sets. Now admins without git CLI can commit their work by simply make of familair change set and use this tool to pull metadata form DEV source org, commit to Github repository and push the work to target QA or Staging.
+The app provides REST API services to automate Salesforce metadata deployments using Github repositories, Agile Accelerator and Change Sets. Admins without using `git` CLI can commit their work by using familair tool such as [Change Set](https://help.salesforce.com/articleView?id=changesets.htm&type=0) and use this Deployment Tool to pull metadata from source DEV org, commit Agile story to Github repository and push the work to target QA or Staging.
 
 ### Dependencies
 
@@ -17,7 +17,7 @@ The app provides REST API services to enable deployments of Salesforce metadata 
 
 ### Java Libraries adn Maven repo
 
-Project depends on set of standard java dependencies that mostly managed by mvn `pom.xml` file. However, the Salesforce migration tool - `ant.salesforce-40.0.0.jar` and Salesforce API wrapper `wcs.ent-40.0.0.jar` were not available in public repositories. I had to include them as local repository in Github. If anyone has better idea how to add these I am open to suggestions. 
+Project depends on set of standard java dependencies that are managed by mvn `pom.xml` file. However, the Salesforce migration tool - `ant.salesforce-40.0.0.jar` and Salesforce API wrapper `wcs.ent-40.0.0.jar` were not available in public repositories. I had to include them as local repository in Github. If anyone has better idea how to add these I am open to suggestions. 
 
 ### Deploy to Heroku
 
@@ -42,3 +42,16 @@ Heroku App Config Vars
 | SFPASS        | Password for source DEV org |
 | SFSERVERURL   | Login URL https://test.salesforce.com |
 | SFPACKAGEHOST | SFDC Url Agile Accelerator installed |
+
+### Services
+
+HTTP Services use simple URL parameteres to queue up deployment work.
+The deploument info is provided in 3 separate location, URL parameters, Heroku environment variable and Agile Accelerator Work Item (Story) data.
+
+| Service            | Endpoint   | Parameters |
+| ------------------ | ---------- | ---------- |
+| Initialize         | /git       | |
+| Pull Changeset     | /pullset   | |
+| Pull & Update repo | /updateset | |
+| Deploy from Github | /deploy    | |
+
